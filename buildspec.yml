@@ -1,0 +1,17 @@
+version: 0.1
+
+phases:
+  pre_build:
+    commands:
+      - dotnet restore
+  build:
+    commands:
+      - echo Build started on `date`
+      - dotnet publish -c Release -o out
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - out/**/*
+  discard-paths: no
