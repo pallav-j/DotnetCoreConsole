@@ -9,7 +9,7 @@ namespace HelloWorldCore
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello! This is my first dotnet Core App with CI using Doker and codebuild");
+            Console.WriteLine("Hello! This is my first dotnet Core App with CI using Docker, CodeBuild and CodeDeploy. Yay!");
             Console.ReadLine();
         }
     }
