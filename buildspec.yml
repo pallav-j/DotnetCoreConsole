@@ -3,7 +3,7 @@ phases:
   pre_build:
     commands:
       - cd ..
-      - mv ./src ./helloworld
+      - mv src helloworld
       - cd helloworld
       - dotnet restore
   build:
