@@ -1,7 +1,7 @@
 version: 0.1
 phases:
-  install:
-    - 
+  #install:
+   # - 
   pre_build:
    # commands:
    #   - dotnet restore
