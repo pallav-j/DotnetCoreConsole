@@ -3,9 +3,9 @@ phases:
   #install:
    # - 
   pre_build:
-   # commands:
+   commands:
    #   - dotnet restore
-   - docker run -i --rm -v "$(pwd):/usr/src/helloworld" -w "/usr/src/helloworld" microsoft/dotnet:latest dotnet restore
+      - docker run -i --rm -v "$(pwd):/usr/src/helloworld" -w "/usr/src/helloworld" microsoft/dotnet:latest dotnet restore
   build:
     commands:
       - docker run -i --rm -v "$(pwd):/usr/src/helloworld" -w "/usr/src/helloworld" microsoft/dotnet:latest dotnet publish -c Release -o out
@@ -16,8 +16,8 @@ phases:
       - docker build -t helloworld:latest .
       - docker tag helloworld:latest 242743551883.dkr.ecr.us-west-2.amazonaws.com/helloworld:latest
       - docker push 242743551883.dkr.ecr.us-west-2.amazonaws.com/helloworld:latest
-artifacts:
-  files:
+#artifacts:
+ # files:
     #- out/**/*
     #- appspec.yml
-  discard-paths: no
+  #discard-paths: no
