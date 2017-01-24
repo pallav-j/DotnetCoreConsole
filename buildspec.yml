@@ -16,8 +16,8 @@ phases:
       - docker build -t helloworld:latest .
       - docker tag helloworld:latest 242743551883.dkr.ecr.us-west-2.amazonaws.com/helloworld:latest
       - docker push 242743551883.dkr.ecr.us-west-2.amazonaws.com/helloworld:latest
-#artifacts:
- # files:
-    #- out/**/*
-    #- appspec.yml
-  #discard-paths: no
+artifacts:
+  files:
+    - out/**/*
+    - appspec.yml
+  discard-paths: no
