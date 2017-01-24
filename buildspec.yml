@@ -1,17 +1,23 @@
 version: 0.1
 phases:
+  install:
+    - 
   pre_build:
-    commands:
-      - dotnet restore
+   # commands:
+   #   - dotnet restore
+   - docker run -i --rm -v "$(pwd):/usr/src/helloworld" -w "/usr/src/helloworld" microsoft/dotnet:latest dotnet restore
   build:
     commands:
-      - echo Build started on `date`
-      - dotnet publish -c Release -o out
+      - docker run -i --rm -v "$(pwd):/usr/src/helloworld" -w "/usr/src/helloworld" microsoft/dotnet:latest dotnet publish -c Release -o out
+ #     - dotnet publish -c Release -o out
   post_build:
     commands:
-      - echo Build completed on `date`
+      - $(aws ecr get-login)
+      - docker build -t helloworld:latest .
+      - docker tag helloworld:latest 242743551883.dkr.ecr.us-west-2.amazonaws.com/helloworld:latest
+      - docker push 242743551883.dkr.ecr.us-west-2.amazonaws.com/helloworld:latest
 artifacts:
   files:
-    - out/**/*
-    - appspec.yml
+    #- out/**/*
+    #- appspec.yml
   discard-paths: no
